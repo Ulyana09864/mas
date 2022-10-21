@@ -1,13 +1,13 @@
-let question_arr = ['В якому році була проголошена незалежність України?','Яку країну вважають агресором у всьому цивілізованому світі?','В якому році росія почала повномаштабну війну з Україною?','Дата вторгнення рф на територію України?'];
-let a1_arr = ["1988","росія","2005","19 лютого"]
-let a2_arr = ["2002","Китай","2008","24 лютого"]
-let a3_arr = ["2000","Німеччина","2022","7 березня"]
-let a4_arr = ["1991","Франція","2014","12 квітня"]
-let answer_arr = ["1991","росія","2022","24 лютого"]
-let n_right_answer_arr = [4,1,3,2,3]
+let question_arr = ["Согласно закону Оукэна, двухпроцентное превышение фактического уровня безработицы над его естественным уровнем означает, что отставание фактического объема ВВП от реального составляет:","Инфляция издержек развивается при:","Кривая, показывающая связь между уровнем безработицы и годовым темпом, роста цен — это:","Государственный долг—это:","Фискальная политика может быть:"]
+let a1_arr = ["2%","умеренном росте объемов денежной массы","кривая Лоренца","задолженность населения, фирм, банков и зарубежных государств передправительством данной страны","стимулирующей"]
+let a2_arr = ["4%","росте цен на ресурсы","кривая Лаффера"," задолженность правительства перед населением страны","сдерживающей"]
+let a3_arr = ["3%","росте цен на потребительские товары и услуги","кривая Филлипса","задолженность правительства данной страны перед иностранными государствами","автоматической"]
+let a4_arr = ["5%","снижении учетной ставки"," кривая спроса","задолженность правительства перед всеми хозяйствующими субъектами как данной страны, так и зарубежных стран","все ответы верны"]
+let answer_arr = ["5%","росте цен на ресурсы","кривая Филлипса","задолженность правительства перед всеми хозяйствующими субъектами как данной страны, так и зарубежных стран","все ответы верны"]
+let n_right_answer_arr = [4,2,3,4,4]
+let n_right_answer = 1;
 let right_answers = 0;
 let n_answer = 4;
-let pointFlag=1;
 
 question.innerHTML=question_arr[n_question.value];
 a1.innerHTML = a1_arr[n_question.value];
@@ -34,12 +34,8 @@ btn2.addEventListener("click", f_out2);
         console.log(n_a);
         
         if (n_a == n_right_answer){
-        if(pointFlag==1){
         right_answers += 1;
-        pointFlag=0;
-        }
         right_div.classList.remove("hidden");
-        right.classList.remove("hidden");
         wrong_div.classList.add("hidden");
         console.log("n_question.value = "+n_question.value);
         console.log("n_answer = "+n_answer);
@@ -51,15 +47,10 @@ btn2.addEventListener("click", f_out2);
         }
         }
         else{
-          if(pointFlag==1){
-            //right_answers -= 1;
-            pointFlag=0;
-            }
-        right_div.classList.remove("hidden");
-        right.classList.add("hidden");
+        right_answers-=1;
+        right_div.classList.add("hidden");
         wrong_div.classList.remove("hidden");
         }
-        console.log ("right_answers=" +right_answers);
   }
   function f_out1 (){
     answer.classList.toggle("hidden");
@@ -67,8 +58,6 @@ btn2.addEventListener("click", f_out2);
   }
   function f_out2 (){
     right_div.classList.add("hidden");
-    wrong_div.classList.add("hidden");
-    pointFlag=1;
     k = Number(n_question.value);
     k+=1;
     n_question.value = k;
